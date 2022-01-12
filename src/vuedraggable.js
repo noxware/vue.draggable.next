@@ -74,6 +74,10 @@ const emits = [
   ...[...events.manageAndEmit, ...events.emit].map(evt => evt.toLowerCase())
 ];
 
+const compatConfig = {
+  MODE: 3
+}
+
 const draggableComponent = defineComponent({
   name: "draggable",
 
@@ -82,6 +86,8 @@ const draggableComponent = defineComponent({
   props,
 
   emits,
+
+  compatConfig,
 
   data() {
     return {

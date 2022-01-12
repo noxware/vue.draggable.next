@@ -4750,11 +4750,15 @@ var props = {
 var emits = ["update:modelValue", "change"].concat(_toConsumableArray([].concat(_toConsumableArray(events.manageAndEmit), _toConsumableArray(events.emit)).map(function (evt) {
   return evt.toLowerCase();
 })));
+var compatConfig = {
+  MODE: 3
+};
 var draggableComponent = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["defineComponent"])({
   name: "draggable",
   inheritAttrs: false,
   props: props,
   emits: emits,
+  compatConfig: compatConfig,
   data: function data() {
     return {
       error: false
@@ -4893,6 +4897,7 @@ var draggableComponent = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["d
     spliceList: function spliceList() {
       var _arguments = arguments;
 
+      // @ts-ignore
       var spliceList = function spliceList(list) {
         return list.splice.apply(list, _toConsumableArray(_arguments));
       };
@@ -4946,7 +4951,8 @@ var draggableComponent = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["d
       }
 
       removeNode(evt.item);
-      var newIndex = this.getVmIndexFromDomIndex(evt.newIndex);
+      var newIndex = this.getVmIndexFromDomIndex(evt.newIndex); // @ts-ignore
+
       this.spliceList(newIndex, 0, element);
       var added = {
         element: element,
@@ -4966,7 +4972,8 @@ var draggableComponent = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["d
 
       var _this$context = this.context,
           oldIndex = _this$context.index,
-          element = _this$context.element;
+          element = _this$context.element; // @ts-ignore
+
       this.spliceList(oldIndex, 1);
       var removed = {
         element: element,
